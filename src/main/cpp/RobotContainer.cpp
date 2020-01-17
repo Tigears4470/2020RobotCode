@@ -20,7 +20,7 @@ RobotContainer::RobotContainer() {
       [this] {return m_joystick->GetX(); }));
   //frc::SmartDashboard::PutString("DB/String 1", "b4 read");
   m_wheel.SetDefaultCommand(GetColorCommand(&m_wheel));
-  m_camera.SetDefaultCommand(VisionCommand(&m_camera));
+  //m_camera.SetDefaultCommand(VisionCommand(&m_camera));
 
   // Configure the button bindings
   ConfigureButtonBindings();
@@ -28,11 +28,12 @@ RobotContainer::RobotContainer() {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-  rotate_wheel = new frc2::JoystickButton(m_joystick, ROTATE_WHEEL_BUTTON);
+  //rotate_wheel = new frc2::JoystickButton(m_joystick, ROTATE_WHEEL_BUTTON);
+  rotate_wheel = new frc2::Button([&] { return m_joystick -> GetRawButton(ROTATE_WHEEL_BUTTON); });
   rotate_wheel -> WhenPressed(RotateWheelCommand(&m_wheel));
 
-  set_color = new frc2::JoystickButton(m_joystick, SET_COLOR_BUTTON);
-  set_color -> WhenPressed(SetColorCommand(&m_wheel));
+  set_color = new frc2::Button([&] { return m_joystick -> GetRawButton(SET_COLOR_BUTTON); });
+  set_color -> WhenReleased(SetColorCommand(&m_wheel));
   
 }
 
