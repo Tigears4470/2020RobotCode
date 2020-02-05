@@ -20,6 +20,7 @@
 #include "commands/ShootCommand.h"
 #include "commands/SuckCommand.h"
 #include "commands/StopCommand.h"
+#include "commands/AutonomousCommand.h"
 
 #include "subsystems/WheelSubsystem.h"
 #include "subsystems/DriveSubsystem.h"

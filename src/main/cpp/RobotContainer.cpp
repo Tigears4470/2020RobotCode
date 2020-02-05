@@ -41,14 +41,15 @@ void RobotContainer::ConfigureButtonBindings() {
   suck -> WhenPressed(SuckCommand(&m_shooter));
 
   stop = new frc2::Button([&] { return m_joystick -> GetRawButton(SHOOTER_SHOOT); });
-  stop -> WhenRelased(StopCommand(&m_shooter));
+  stop -> WhenReleased(StopCommand(&m_shooter));
 
   stop = new frc2::Button([&] { return m_joystick -> GetRawButton(SHOOTER_SUCK); });
-  stop -> WhenRelased(StopCommand(&m_shooter));
+  stop -> WhenReleased(StopCommand(&m_shooter));
   
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
+  AutonomousCommand(new DriveSubsystem());
   return nullptr;
 }
