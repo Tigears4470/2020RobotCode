@@ -17,10 +17,15 @@
 #include "commands/VisionCommand.h"
 #include "commands/SetColorCommand.h"
 #include "commands/RotateWheelCommand.h"
+#include "commands/ShootCommand.h"
+#include "commands/SuckCommand.h"
+#include "commands/StopCommand.h"
 
 #include "subsystems/WheelSubsystem.h"
 #include "subsystems/DriveSubsystem.h"
 #include "subsystems/CameraSubsystem.h"
+#include "subsystems/BallShooterSubsystem.h"
+
 
 #include "Constants.h"
 
@@ -43,8 +48,12 @@ class RobotContainer {
   DriveSubsystem m_drivetrain;  
   WheelSubsystem m_wheel;
   CameraSubsystem m_camera;
+  BallShooterSubsystem m_shooter;
   frc2::Button* rotate_wheel;
   frc2::Button* set_color;
+  frc2::Button* shoot;
+  frc2::Button* suck;
+  frc2::Button* stop;
 
   void ConfigureButtonBindings();
 };

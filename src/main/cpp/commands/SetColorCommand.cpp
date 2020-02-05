@@ -19,38 +19,40 @@ SetColorCommand::SetColorCommand(WheelSubsystem* subsystem) {
 // Called when the command is initially scheduled.
 void SetColorCommand::Initialize() {
   frc::SmartDashboard::PutString("DB/String 6", "Set Color Command Initialized");
-std::string gameData;
-gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-if(gameData.length() > 0)
-{
-  switch (gameData[0])
-  {
-    case 'B' :
-      color_needed = "BLUE";
-      //Blue case code
-      break;
-    case 'G' :
-      //Green case code
-      color_needed = "GREEN";
-      break;
-    case 'R' :
-      //Red case code
-      color_needed = "RED";
-      break;
-    case 'Y' :
-      //Yellow case code
-      color_needed = "YELLOW";
-      break;
-    default :
-      //This is corrupt data
-      color_needed = "Nothing";
-      break;
-  }
-} else {
-  color_needed = "Nothing";
-  frc::SmartDashboard::PutString("DB/String 5", "No Data Read");
-  //Code for no data received yet
-} 
+// std::string gameData;
+// gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+// gameData = "BLUE";
+// if(gameData.length() > 0)
+// {
+//   switch (gameData[0])
+//   {
+//     case 'B' :
+//       color_needed = "BLUE";
+//       //Blue case code
+//       break;
+//     case 'G' :
+//       //Green case code
+//       color_needed = "GREEN";
+//       break;
+//     case 'R' :
+//       //Red case code
+//       color_needed = "RED";
+//       break;
+//     case 'Y' :
+//       //Yellow case code
+//       color_needed = "YELLOW";
+//       break;
+//     default :
+//       //This is corrupt data
+//       color_needed = "Nothing";
+//       break;
+//   }
+// } else {
+//   color_needed = "Nothing";
+//   frc::SmartDashboard::PutString("DB/String 5", "No Data Read");
+//   //Code for no data received yet
+// } 
+color_needed = "BLUE";
   if(color_needed == "Nothing") 
   {
     is_finished = true;
@@ -65,6 +67,7 @@ if(gameData.length() > 0)
 
 // Called repeatedly when this Command is scheduled to run
 void SetColorCommand::Execute() {
+  frc::SmartDashboard::PutString("DB/String 6", "Setting Color");
   int* read_clr_values = wheel_sub -> Read();
   int red_distance = distance(c_RED, read_clr_values);
   int green_distance = distance(c_GREEN, read_clr_values);
@@ -117,7 +120,7 @@ void SetColorCommand::Execute() {
 
 // Called once the command ends or is interrupted.
 void SetColorCommand::End(bool interrupted) {
-  frc::SmartDashboard::PutString("DB/String 5", "");
+  frc::SmartDashboard::PutString("DB/String 6", "Color Set");
 }
 
 // Returns true when the command should end.

@@ -7,10 +7,11 @@
 
 #pragma once
 
+#include <subsystems/BallShooterSubsystem.h>
+#include <Constants.h>
+
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-
-#include "subsystems/DriveSubsystem.h"
 
 /**
  * An example command.
@@ -19,11 +20,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class ArcadeDriveCommand
-    : public frc2::CommandHelper<frc2::CommandBase, ArcadeDriveCommand>
-{
-public:
-  explicit ArcadeDriveCommand(DriveSubsystem *subsystem, std::function<double()> forward, std::function<double()> rotation);
+class ShootCommand
+    : public frc2::CommandHelper<frc2::CommandBase, ShootCommand> {
+ public:
+  ShootCommand(BallShooterSubsystem* subsystem);
 
   void Initialize() override;
 
@@ -33,10 +33,6 @@ public:
 
   bool IsFinished() override;
 
-private:
-  DriveSubsystem* drive_train;
-  std::function<double()> m_forward;
-  std::function<double()> m_rotation;
-  double speed;
-  double acceleration;
+  private:
+  BallShooterSubsystem* shooter;
 };

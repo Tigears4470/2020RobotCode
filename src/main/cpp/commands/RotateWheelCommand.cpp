@@ -20,6 +20,7 @@ RotateWheelCommand::RotateWheelCommand(WheelSubsystem* subsystem) {
 // Called when the command is initially scheduled.
 void RotateWheelCommand::Initialize() {
   frc::SmartDashboard::PutString("DB/String 6", "Rotate Wheel Command Initialized");
+  frc::SmartDashboard::PutString("DB/String 6", "Still Spinning");
   int* read_clr_values = wheel_sub -> Read();
   int red_distance = distance(c_RED, read_clr_values);
   int green_distance = distance(c_GREEN, read_clr_values);
@@ -99,7 +100,9 @@ void RotateWheelCommand::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void RotateWheelCommand::End(bool interrupted) {}
+void RotateWheelCommand::End(bool interrupted) {
+   frc::SmartDashboard::PutString("DB/String 6", "Spinning End");
+}
 
 // Returns true when the command should end.
 bool RotateWheelCommand::IsFinished() { return is_finished; }
