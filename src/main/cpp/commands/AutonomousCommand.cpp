@@ -9,8 +9,8 @@
 
 AutonomousCommand::AutonomousCommand(DriveSubsystem *subsystem, BallShooterSubsystem *subsystem2) {
   drive_train = subsystem;
-  is_finished = false;
   shooter = subsystem2;
+  is_finished = false;
   timer = new frc::Timer();
   AddRequirements({subsystem});
   AddRequirements({subsystem2});
@@ -29,15 +29,14 @@ void AutonomousCommand::Execute() {
   {
     drive_train -> ArcadeDrive(0.5, 0);
   }
-  else if(timer -> Get() > 5.0 && timer -> Get() <= 10.0)
+  else if(timer -> Get() <= 10)
   {
     drive_train -> ArcadeDrive(0.0, 0.0);
-    shooter -> SetSpeed(0.5);
+    shooter ->SetSpeed(0.5);
   }
   else
   {
     drive_train -> ArcadeDrive(0.0, 0.0);
-    shooter -> SetSpeed(0.0);
     is_finished = true;
   }
   
@@ -46,7 +45,7 @@ void AutonomousCommand::Execute() {
 // Called once the command ends or is interrupted.
 void AutonomousCommand::End(bool interrupted) {
   drive_train -> ArcadeDrive(0.0, 0.0);
-    shooter -> SetSpeed(0.0);
+  shooter -> SetSpeed(0.0);
 }
 
 // Returns true when the command should end.

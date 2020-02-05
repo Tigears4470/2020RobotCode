@@ -10,7 +10,6 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include <frc/Timer.h>
-
 #include <subsystems/DriveSubsystem.h>
 #include <subsystems/BallShooterSubsystem.h>
 
@@ -37,7 +36,7 @@ class AutonomousCommand
   private:
 
   DriveSubsystem* drive_train;
-  frc::Timer* timer;
   BallShooterSubsystem* shooter;
+  frc::Timer* timer;
   bool is_finished;
 };
