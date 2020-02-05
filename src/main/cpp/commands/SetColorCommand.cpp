@@ -18,47 +18,48 @@ SetColorCommand::SetColorCommand(WheelSubsystem* subsystem) {
 
 // Called when the command is initially scheduled.
 void SetColorCommand::Initialize() {
-  frc::SmartDashboard::PutString("DB/String 6", "Set Color Command Initialized");
-std::string gameData;
-gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-if(gameData.length() > 0)
-{
-  switch (gameData[0])
-  {
-    case 'B' :
-      color_needed = "BLUE";
-      //Blue case code
-      break;
-    case 'G' :
-      //Green case code
-      color_needed = "GREEN";
-      break;
-    case 'R' :
-      //Red case code
-      color_needed = "RED";
-      break;
-    case 'Y' :
-      //Yellow case code
-      color_needed = "YELLOW";
-      break;
-    default :
-      //This is corrupt data
-      color_needed = "Nothing";
-      break;
-  }
-} else {
-  color_needed = "Nothing";
-  frc::SmartDashboard::PutString("DB/String 5", "No Data Read");
-  //Code for no data received yet
-} 
-  if(color_needed == "Nothing") 
-  {
-    is_finished = true;
-  }
-  else
-  {
-    m_spinner ->SetSpeed(SPINNER_SPEED);
-  }
+  color_needed = "BLUE";
+  is_finished = false;
+// std::string gameData;
+// gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+// if(gameData.length() > 0)
+// {
+//   switch (gameData[0])
+//   {
+//     case 'B' :
+//       color_needed = "BLUE";
+//       //Blue case code
+//       break;
+//     case 'G' :
+//       //Green case code
+//       color_needed = "GREEN";
+//       break;
+//     case 'R' :
+//       //Red case code
+//       color_needed = "RED";
+//       break;
+//     case 'Y' :
+//       //Yellow case code
+//       color_needed = "YELLOW";
+//       break;
+//     default :
+//       //This is corrupt data
+//       color_needed = "Nothing";
+//       break;
+//   }
+// } else {
+//   color_needed = "Nothing";
+//   frc::SmartDashboard::PutString("DB/String 5", "No Data Read");
+//   //Code for no data received yet
+// } 
+//   if(color_needed == "Nothing") 
+//   {
+//     is_finished = true;
+//   }
+//   else
+//   {
+     m_spinner ->SetSpeed(SPINNER_SPEED);
+//   }
    
 
 }
@@ -74,21 +75,27 @@ void SetColorCommand::Execute() {
   int smallest_distance = std::min({red_distance, green_distance, blue_distance, yellow_distance }, [](int a, int b) {return a < b;});
   if(smallest_distance == red_distance)
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Red");
     current_color = "RED";
   }
   else if(smallest_distance == green_distance)
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Green");
     current_color = "GREEN";
   }
   else if(smallest_distance == blue_distance)
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Blue");
     current_color = "BLUE";
   }
   else
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Yellow");
     current_color = "YELLOW";
   }
 
+
+  frc::SmartDashboard::PutString("DB/String 5", "Set Color Running");
   if(color_needed == "RED" && current_color == "BLUE")
   {
     is_finished = true;
@@ -117,7 +124,7 @@ void SetColorCommand::Execute() {
 
 // Called once the command ends or is interrupted.
 void SetColorCommand::End(bool interrupted) {
-  frc::SmartDashboard::PutString("DB/String 5", "");
+  frc::SmartDashboard::PutString("DB/String 5", "Set Color Finished");
 }
 
 // Returns true when the command should end.

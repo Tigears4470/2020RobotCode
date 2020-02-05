@@ -19,7 +19,9 @@ RotateWheelCommand::RotateWheelCommand(WheelSubsystem* subsystem) {
 
 // Called when the command is initially scheduled.
 void RotateWheelCommand::Initialize() {
-  frc::SmartDashboard::PutString("DB/String 6", "Rotate Wheel Command Initialized");
+  frc::SmartDashboard::PutString("DB/String 6", "");
+  revolutions = 0;
+  is_finished = false;
   int* read_clr_values = wheel_sub -> Read();
   int red_distance = distance(c_RED, read_clr_values);
   int green_distance = distance(c_GREEN, read_clr_values);
@@ -58,6 +60,7 @@ void RotateWheelCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RotateWheelCommand::Execute() {
+  frc::SmartDashboard::PutString("DB/String 5", "Rotate Wheel Running");
   int* read_clr_values = wheel_sub -> Read();
   int red_distance = distance(c_RED, read_clr_values);
   int green_distance = distance(c_GREEN, read_clr_values);
@@ -68,21 +71,28 @@ void RotateWheelCommand::Execute() {
   int smallest_distance = std::min({red_distance, green_distance, blue_distance, yellow_distance }, [](int a, int b) {return a < b;});
   if(smallest_distance == red_distance)
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Red");
     current_color = "RED";
   }
   else if(smallest_distance == green_distance)
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Green");
     current_color = "GREEN";
   }
   else if(smallest_distance == blue_distance)
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Blue");
     current_color = "BLUE";
   }
   else
   {
+    frc::SmartDashboard::PutString("DB/String 1", "Color: Yellow");
     current_color = "YELLOW";
   }
 
+  std::string revolutions_string =  "Revs: " + std::to_string(revolutions/2); 
+
+  frc::SmartDashboard::PutString("DB/String 6", revolutions_string);
 
 
 
@@ -99,7 +109,10 @@ void RotateWheelCommand::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void RotateWheelCommand::End(bool interrupted) {}
+void RotateWheelCommand::End(bool interrupted) {
+    frc::SmartDashboard::PutString("DB/String 5", "Rotate Wheel Ended");
+    frc::SmartDashboard::PutString("DB/String 6", "");
+}
 
 // Returns true when the command should end.
 bool RotateWheelCommand::IsFinished() { return is_finished; }

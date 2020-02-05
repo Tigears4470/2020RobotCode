@@ -13,21 +13,26 @@
 #include "cameraserver/CameraServer.h"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
+#include <GripPipeline.h>
+#include <thread>
 
 class CameraSubsystem : public frc2::SubsystemBase {
- public:
+  public:
   CameraSubsystem();
+  
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic();
-
   cs::UsbCamera* GetCamera();
+  void StartCamera();
 
  private:
   cs::UsbCamera *usb_camera;
-  
+  cs::CvSource outputStream;
+  //grip::GripPipeline *grip;
+  cs::CvSink cvSink;
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };

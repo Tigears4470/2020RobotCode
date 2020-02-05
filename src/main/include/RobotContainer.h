@@ -23,6 +23,7 @@
 #include "subsystems/CameraSubsystem.h"
 
 #include "Constants.h"
+#include <thread>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -45,6 +46,7 @@ class RobotContainer {
   CameraSubsystem m_camera;
   frc2::Button* rotate_wheel;
   frc2::Button* set_color;
+  std::thread* t;
 
   void ConfigureButtonBindings();
 };

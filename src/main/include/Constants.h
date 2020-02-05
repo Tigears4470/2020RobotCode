@@ -43,7 +43,7 @@ const int COLOR_SQUARED = 2;
 
 const int BUFFER = 10;
 
-const int REVOLUTIONS_NEEDED = 3;
+const int REVOLUTIONS_NEEDED = 6;
 
 const double SPINNER_SPEED = 0.5;
 const double SPINNER_STOP_SPEED = 0;

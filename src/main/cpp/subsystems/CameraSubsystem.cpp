@@ -9,6 +9,13 @@
 
 CameraSubsystem::CameraSubsystem() {
     usb_camera = new cs::UsbCamera("USB Camera 0", 0);
+    StartCamera();
+    // cvSink = frc::CameraServer::GetInstance()->GetVideo();
+    // cv::Mat source;
+    // cvSink.GrabFrame(source);
+    // grip = new grip::GripPipeline();
+    // grip->Process(source);
+    //outputStream = frc::CameraServer::GetInstance()->PutVideo("Blur", 640, 480);
 }
 
 cs::UsbCamera* CameraSubsystem::GetCamera()
@@ -16,5 +23,11 @@ cs::UsbCamera* CameraSubsystem::GetCamera()
     return usb_camera;
 }
 
+void CameraSubsystem::StartCamera()
+{
+  
+  frc::CameraServer::GetInstance()->StartAutomaticCapture();
+}
 // This method will be called once per scheduler run
-void CameraSubsystem::Periodic() {}
+void CameraSubsystem::Periodic() {
+ }
