@@ -7,13 +7,22 @@
 
 #include "commands/AutonomousCommand.h"
 
-AutonomousCommand::AutonomousCommand(DriveSubsystem *subsystem, BallShooterSubsystem *subsystem2) {
+AutonomousCommand::AutonomousCommand(DriveSubsystem *subsystem, BallShooterSubsystem *subsystem2, int pos) {
   drive_train = subsystem;
   shooter = subsystem2;
   is_finished = false;
   timer = new frc::Timer();
+  left_encoder = new frc::Encoder(1, 2, false, frc::Encoder::k4X);
+  right_encoder = new frc::Encoder(3, 4, false, frc::Encoder::k4X);
   AddRequirements({subsystem});
   AddRequirements({subsystem2});
+  position = pos;
+  left_encoder -> SetSamplesToAverage(5);
+  left_encoder -> SetDistancePerPulse(1.0 / 360.0 * 2.0 * wpi::math::pi * 1.5);
+  left_encoder -> SetMinRate(1.0);
+  right_encoder -> SetSamplesToAverage(5);
+  right_encoder -> SetDistancePerPulse(1.0 / 360.0 * 2.0 * wpi::math::pi * 1.5);
+  right_encoder -> SetMinRate(1.0);
   // Use addRequirements() here to declare subsystem dependencies.
 }
 
@@ -25,20 +34,20 @@ void AutonomousCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
-  if(timer -> Get() <= 5.0)
+  
+  if(position == 0)
   {
-    drive_train -> ArcadeDrive(0.5, 0);
+    RightStart();
   }
-  else if(timer -> Get() <= 10)
+  else if(position == 1)
   {
-    drive_train -> ArcadeDrive(0.0, 0.0);
-    shooter ->SetSpeed(0.5);
+    MiddleStart();
   }
   else
   {
-    drive_train -> ArcadeDrive(0.0, 0.0);
-    is_finished = true;
+    LeftStart();
   }
+  
   
 }
 
@@ -50,3 +59,18 @@ void AutonomousCommand::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool AutonomousCommand::IsFinished() { return is_finished; }
+
+void AutonomousCommand::LeftStart()
+{
+
+}
+
+void AutonomousCommand::MiddleStart()
+{
+  
+}
+
+void AutonomousCommand::RightStart()
+{
+  
+}

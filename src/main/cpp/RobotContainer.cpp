@@ -10,6 +10,7 @@
 RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   m_joystick = new frc::Joystick(JOYSTICK_PORT);
+  m_switchbox = new frc::Joystick(2);
 
 
   frc::SmartDashboard::PutData(&m_drivetrain);
@@ -49,7 +50,18 @@ void RobotContainer::ConfigureButtonBindings() {
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
+  if(m_switchbox -> GetRawButton(0))
+  {
+    AutonomousCommand(new DriveSubsystem(), new BallShooterSubsystem(), 0);
+  }
+  else if(m_switchbox -> GetRawButton(1))
+  {
+    AutonomousCommand(new DriveSubsystem(), new BallShooterSubsystem(), 1);
+  }
+  else
+  {
+    AutonomousCommand(new DriveSubsystem(), new BallShooterSubsystem(), 2);
+  }
   // An example command will be run in autonomous
-  AutonomousCommand(new DriveSubsystem(), new BallShooterSubsystem());
   return nullptr;
 }

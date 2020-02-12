@@ -12,6 +12,8 @@
 #include <frc/Timer.h>
 #include <subsystems/DriveSubsystem.h>
 #include <subsystems/BallShooterSubsystem.h>
+#include <frc/Encoder.h>
+#include <wpi/math>
 
 /**
  * An example command.
@@ -23,7 +25,7 @@
 class AutonomousCommand
     : public frc2::CommandHelper<frc2::CommandBase, AutonomousCommand> {
  public:
-  explicit AutonomousCommand(DriveSubsystem *subsystem, BallShooterSubsystem *subsystem2);
+  explicit AutonomousCommand(DriveSubsystem *subsystem, BallShooterSubsystem *subsystem2, int pos);
 
   void Initialize() override;
 
@@ -35,8 +37,17 @@ class AutonomousCommand
 
   private:
 
+  void RightStart();
+
+  void LeftStart();
+
+  void MiddleStart();
+
   DriveSubsystem* drive_train;
   BallShooterSubsystem* shooter;
   frc::Timer* timer;
+  frc::Encoder* left_encoder;
+  frc::Encoder* right_encoder;
   bool is_finished;
+  int position;
 };
