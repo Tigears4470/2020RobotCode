@@ -37,11 +37,7 @@ class AutonomousCommand
 
   private:
 
-  void RightStart();
-
-  void LeftStart();
-
-  void MiddleStart();
+  void AutonomousRun(int firstDistance, int firstTurn, int secondDistance, int secondTurn, int lastDistance);
 
   DriveSubsystem* drive_train;
   BallShooterSubsystem* shooter;
@@ -50,4 +46,6 @@ class AutonomousCommand
   frc::Encoder* right_encoder;
   bool is_finished;
   int position;
+  double speed;
+  double turn;
 };
