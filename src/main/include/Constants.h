@@ -23,6 +23,7 @@ const int LEFT_MOTOR = 0;
 const int SPINNER_PORT = 1;
 const int RIGHT_MOTOR = 6;
 const int SHOOTER_PORT = 2;
+const int ELEVATOR_PORT = 3;
 
 const int JOYSTICK_PORT = 0;
 
