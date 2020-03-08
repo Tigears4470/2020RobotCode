@@ -9,6 +9,7 @@
 
 #include <frc/RobotDrive.h>
 #include <frc2/command/SubsystemBase.h>
+#include <frc/Joystick.h>
 
 #include "Constants.h"
 
@@ -25,6 +26,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
 
  private:
   frc::RobotDrive* m_drive;
+  frc::Joystick* m_joystick;
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };

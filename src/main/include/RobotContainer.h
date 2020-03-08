@@ -17,9 +17,7 @@
 #include "commands/VisionCommand.h"
 #include "commands/SetColorCommand.h"
 #include "commands/RotateWheelCommand.h"
-#include "commands/ShootCommand.h"
-#include "commands/SuckCommand.h"
-#include "commands/StopCommand.h"
+#include "commands/ShootAndSuckCommand.h"
 #include "commands/AutonomousCommand.h"
 
 #include "subsystems/WheelSubsystem.h"
@@ -46,16 +44,16 @@ class RobotContainer {
  private:
   // The robot's subsystems and commands are defined here...
   frc::Joystick* m_joystick;
+  frc::Joystick* m_joystick2;
   frc::Joystick* m_switchbox;
+
   DriveSubsystem m_drivetrain;  
   WheelSubsystem m_wheel;
   CameraSubsystem m_camera;
   BallShooterSubsystem m_shooter;
+  
   frc2::Button* rotate_wheel;
   frc2::Button* set_color;
-  frc2::Button* shoot;
-  frc2::Button* suck;
-  frc2::Button* stop;
 
   void ConfigureButtonBindings();
 };

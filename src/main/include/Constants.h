@@ -53,9 +53,8 @@ const double SPINNER_STOP_SPEED = 0;
 // Joystick Buttons
 const int ROTATE_WHEEL_BUTTON = 2;
 const int SET_COLOR_BUTTON = 3;
-const int SHOOTER_SHOOT = 4;
-const int SHOOTER_SUCK = 5;
-const int SHOOT_STOP = 6;
+const int SHOOTER_SHOOT_BUTTON = 4;
+const int SHOOTER_SUCK_BUTTON = 5;
 
 
 //Control Theory

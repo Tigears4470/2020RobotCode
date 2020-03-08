@@ -5,25 +5,36 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/SuckCommand.h"
+#include "commands/ShootAndSuckCommand.h"
 
-SuckCommand::SuckCommand(BallShooterSubsystem* subsystem) {
+ShootAndSuckCommand::ShootAndSuckCommand(BallShooterSubsystem* subsystem) {
   shooter = subsystem;
+  m_stick = new frc::Joystick(0);
   AddRequirements({subsystem});
   // Use addRequirements() here to declare subsystem dependencies.
 }
 
 // Called when the command is initially scheduled.
-void SuckCommand::Initialize() {
-    shooter -> SetSpeed(SHOOTER_SUCK_SPEED);
+void ShootAndSuckCommand::Initialize() {
+  if(m_stick -> GetRawButton(SHOOTER_SHOOT_BUTTON))
+  {
+    shooter -> SetSpeed(SHOOTER_SHOOT_SPEED);
+  }
+  else if(m_stick -> GetRawButton(SHOOTER_STOP_SPEED))
+  {
+    shooter -> SetSpeed(SHOOTER_SUCK_BUTTON);
+  }
+  else
+  {
+    shooter ->SetSpeed(0);
+  }
 }
 
 // Called repeatedly when this Command is scheduled to run
-void SuckCommand::Execute() {
-}
+void ShootAndSuckCommand::Execute() {}
 
 // Called once the command ends or is interrupted.
-void SuckCommand::End(bool interrupted) {}
+void ShootAndSuckCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool SuckCommand::IsFinished() { return true; }
+bool ShootAndSuckCommand::IsFinished() { return false; }

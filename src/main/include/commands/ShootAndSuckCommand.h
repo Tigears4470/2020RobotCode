@@ -12,6 +12,7 @@
 
 #include <subsystems/BallShooterSubsystem.h>
 #include <Constants.h>
+#include <frc/Joystick.h>
 
 /**
  * An example command.
@@ -20,10 +21,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class SuckCommand
-    : public frc2::CommandHelper<frc2::CommandBase, SuckCommand> {
+class ShootAndSuckCommand
+    : public frc2::CommandHelper<frc2::CommandBase, ShootAndSuckCommand> {
  public:
-  SuckCommand(BallShooterSubsystem* subsystem);
+  ShootAndSuckCommand(BallShooterSubsystem* subsystem);
 
   void Initialize() override;
 
@@ -33,6 +34,7 @@ class SuckCommand
 
   bool IsFinished() override;
 
-  private:
+private:
   BallShooterSubsystem* shooter;
+  frc::Joystick* m_stick;
 };

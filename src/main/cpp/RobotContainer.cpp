@@ -10,6 +10,7 @@
 RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   m_joystick = new frc::Joystick(JOYSTICK_PORT);
+  m_joystick2 = new frc::Joystick(1);
   m_switchbox = new frc::Joystick(2);
 
 
@@ -21,7 +22,7 @@ RobotContainer::RobotContainer() {
       [this] {return m_joystick->GetX(); }));
   //frc::SmartDashboard::PutString("DB/String 1", "b4 read");
   m_wheel.SetDefaultCommand(GetColorCommand(&m_wheel));
-  //m_camera.SetDefaultCommand(VisionCommand(&m_camera));
+  m_shooter.SetDefaultCommand(ShootAndSuckCommand(&m_shooter));
 
   // Configure the button bindings
   ConfigureButtonBindings();
@@ -34,18 +35,6 @@ void RobotContainer::ConfigureButtonBindings() {
 
   set_color = new frc2::Button([&] { return m_joystick -> GetRawButton(SET_COLOR_BUTTON); });
   set_color -> WhenReleased(SetColorCommand(&m_wheel));
-
-  shoot = new frc2::Button([&] { return m_joystick -> GetRawButton(SHOOTER_SHOOT); });
-  shoot -> WhenPressed(ShootCommand(&m_shooter));
-
-  suck = new frc2::Button([&] { return m_joystick -> GetRawButton(SHOOTER_SUCK); });
-  suck -> WhenPressed(SuckCommand(&m_shooter));
-
-  stop = new frc2::Button([&] { return m_joystick -> GetRawButton(SHOOTER_SHOOT); });
-  stop -> WhenReleased(StopCommand(&m_shooter));
-
-  stop = new frc2::Button([&] { return m_joystick -> GetRawButton(SHOOTER_SUCK); });
-  stop -> WhenReleased(StopCommand(&m_shooter));
   
 }
 
