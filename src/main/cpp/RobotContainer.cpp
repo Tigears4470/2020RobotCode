@@ -19,11 +19,8 @@ RobotContainer::RobotContainer() {
       [this] {return m_joystick->GetY(); },
       [this] {return m_joystick->GetX(); }));
   //frc::SmartDashboard::PutString("DB/String 1", "b4 read");
-  m_wheel.SetDefaultCommand(GetColorCommand(&m_wheel));
-      t = new std::thread(m_camera);
-    t -> detach();
+  //m_wheel.SetDefaultCommand(GetColorCommand(&m_wheel));
   //m_camera.SetDefaultCommand(VisionCommand(&m_camera));
-
   // Configure the button bindings
   ConfigureButtonBindings();
 }
@@ -35,7 +32,9 @@ void RobotContainer::ConfigureButtonBindings() {
 
   set_color = new frc2::Button([&] { return m_joystick -> GetRawButton(SET_COLOR_BUTTON); });
   set_color -> WhenReleased(SetColorCommand(&m_wheel));
-  
+
+  alignment_button = new frc2::Button([&] { return m_joystick -> GetRawButton(ALIGN_BUTTON); });
+  alignment_button -> WhenHeld(AlignmentCommand());
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

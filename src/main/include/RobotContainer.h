@@ -17,6 +17,7 @@
 #include "commands/VisionCommand.h"
 #include "commands/SetColorCommand.h"
 #include "commands/RotateWheelCommand.h"
+#include "commands/AlignmentCommand.h"
 
 #include "subsystems/WheelSubsystem.h"
 #include "subsystems/DriveSubsystem.h"
@@ -46,7 +47,8 @@ class RobotContainer {
   CameraSubsystem m_camera;
   frc2::Button* rotate_wheel;
   frc2::Button* set_color;
-  std::thread* t;
+  frc2::Button* alignment_button;
+  //std::thread* t;
 
   void ConfigureButtonBindings();
 };

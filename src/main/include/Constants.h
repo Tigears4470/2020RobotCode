@@ -22,6 +22,7 @@
 const int LEFT_MOTOR = 0;
 const int SPINNER_PORT = 1;
 const int RIGHT_MOTOR = 6;
+const int YAW_MOTOR_PORT = 2;
 
 const int JOYSTICK_PORT = 0;
 
@@ -51,3 +52,4 @@ const double SPINNER_STOP_SPEED = 0;
 // Joystick Buttons
 const int ROTATE_WHEEL_BUTTON = 2;
 const int SET_COLOR_BUTTON = 3;
+const int ALIGN_BUTTON = 4;
