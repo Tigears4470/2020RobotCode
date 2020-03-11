@@ -56,7 +56,8 @@ void AutonomousCommand::Execute() {
 // Called once the command ends or is interrupted.
 void AutonomousCommand::End(bool interrupted) {
   drive_train -> ArcadeDrive(0.0, 0.0);
-  shooter -> SetSpeed(0.0);
+  shooter -> Shoot(0.0);
+  shooter -> Suck(0.0);
 }
 
 // Returns true when the command should end.
@@ -71,7 +72,7 @@ void AutonomousCommand::AutonomousRun(int firstDistance, int firstTurn, int seco
      {
      speed += .05;
      }
-     shooter->SetSpeed(-0.5);
+     shooter->Suck(-0.5);
   }
   else if(right_encoder -> Get() <= firstTurn-100)
   {
@@ -124,7 +125,7 @@ void AutonomousCommand::AutonomousRun(int firstDistance, int firstTurn, int seco
   {
   speed, turn = 0;
   drive_train -> ArcadeDrive(speed, turn);
-  shooter-> SetSpeed(1.0);
+  shooter-> Shoot(1.0);
   }
 }
 

@@ -7,8 +7,9 @@
 
 #pragma once
 
-#include <frc/Spark.h>
+#include "rev/CANSparkMax.h"
 #include <Constants.h>
+#include <frc/Victor.h>
 
 #include <frc2/command/SubsystemBase.h>
 
@@ -21,10 +22,13 @@ class BallShooterSubsystem : public frc2::SubsystemBase {
    */
   void Periodic();
 
-  void SetSpeed(double speed);
+  void Shoot(double speed);
+
+  void Suck(double speed);
 
  private:
-  frc::Spark* shooter;
+  rev::CANSparkMax* shooter;
+  frc::Victor* sucker;
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };

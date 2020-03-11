@@ -24,6 +24,11 @@ const int SPINNER_PORT = 1;
 const int RIGHT_MOTOR = 6;
 const int SHOOTER_PORT = 2;
 const int ELEVATOR_PORT = 3;
+const int SUCKER_PORT = 6;
+
+const int SHOOTER_CAN_ID = 6;
+const int PITCH_CAN_ID = 7;
+const int YAW_CAN_ID = 8;
 
 const int JOYSTICK_PORT = 0;
 
@@ -55,6 +60,7 @@ const int ROTATE_WHEEL_BUTTON = 2;
 const int SET_COLOR_BUTTON = 3;
 const int SHOOTER_SHOOT_BUTTON = 4;
 const int SHOOTER_SUCK_BUTTON = 5;
+const int REVERSE_DRIVE_TRAIN_BUTTON = 8;
 
 
 //Control Theory

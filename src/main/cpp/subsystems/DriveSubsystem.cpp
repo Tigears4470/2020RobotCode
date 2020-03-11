@@ -20,13 +20,15 @@ void DriveSubsystem::Periodic() {}
 
 void DriveSubsystem::ArcadeDrive(double fwd, double rot)
 {
-    if(m_joystick -> GetRawButton(8))
+    if(m_joystick -> GetRawButton(REVERSE_DRIVE_TRAIN_BUTTON))
     {
     m_drive -> ArcadeDrive(-fwd, -rot);
+    frc::SmartDashboard::PutString("DB/String 5", "Reverse Drive Train");
     }
     else
     {
-         m_drive -> ArcadeDrive(fwd, rot);
+    m_drive -> ArcadeDrive(fwd, rot);
+    frc::SmartDashboard::PutString("DB/String 5", "Normal Drive Train");
     }
     
 }

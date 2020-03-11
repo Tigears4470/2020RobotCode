@@ -8,13 +8,19 @@
 #include "subsystems/BallShooterSubsystem.h"
 
 BallShooterSubsystem::BallShooterSubsystem() {
-    shooter = new frc::Spark(SHOOTER_PORT);
+    shooter = new rev::CANSparkMax(SHOOTER_CAN_ID, rev::CANSparkMax::MotorType::kBrushed);
+    sucker = new frc::Victor(SUCKER_PORT);
 }
 
 // This method will be called once per scheduler run
 void BallShooterSubsystem::Periodic() {}
 
-void BallShooterSubsystem::SetSpeed(double speed)
+void BallShooterSubsystem::Shoot(double speed)
 {
     shooter -> Set(speed);
+}
+
+void BallShooterSubsystem::Suck(double speed)
+{
+    sucker -> Set(speed);
 }

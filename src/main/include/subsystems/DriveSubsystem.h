@@ -10,6 +10,7 @@
 #include <frc/RobotDrive.h>
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Joystick.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 #include "Constants.h"
 

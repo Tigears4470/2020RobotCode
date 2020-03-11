@@ -18,15 +18,25 @@ ShootAndSuckCommand::ShootAndSuckCommand(BallShooterSubsystem* subsystem) {
 void ShootAndSuckCommand::Initialize() {
   if(m_stick -> GetRawButton(SHOOTER_SHOOT_BUTTON))
   {
-    shooter -> SetSpeed(SHOOTER_SHOOT_SPEED);
+    shooter -> Shoot(SHOOTER_SHOOT_SPEED);
+    frc::SmartDashboard::PutString("DB/String 6", "Shooter Shooting");
   }
-  else if(m_stick -> GetRawButton(SHOOTER_STOP_SPEED))
+  else 
   {
-    shooter -> SetSpeed(SHOOTER_SUCK_BUTTON);
+    shooter ->Shoot(0);
+    frc::SmartDashboard::PutString("DB/String 6", "Shooter Stopped");
+  }
+  
+  
+  if(m_stick -> GetRawButton(SHOOTER_SUCK_BUTTON))
+  {
+    shooter -> Suck(SHOOTER_SUCK_BUTTON);
+    frc::SmartDashboard::PutString("DB/String 7", "Sucker Sucking");
   }
   else
   {
-    shooter ->SetSpeed(0);
+    shooter -> Suck(0);
+    frc::SmartDashboard::PutString("DB/String 7", "Sucker Stopped");
   }
 }
 
