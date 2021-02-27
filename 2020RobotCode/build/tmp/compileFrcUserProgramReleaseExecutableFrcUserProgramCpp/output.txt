@@ -1,0 +1,23 @@
+See file:///C:/2020Season/2020RobotCode/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
+compiling AlignmentCommand.cpp successful.
+
+compiling VisionCommand.cpp successful.
+C:\2020Season\2020RobotCode\src\main\cpp\commands\VisionCommand.cpp: In member function 'void VisionCommand::ConnectCamera()':
+C:\2020Season\2020RobotCode\src\main\cpp\commands\VisionCommand.cpp:43:23: warning: logical not is only applied to the left hand side of comparison [-Wlogical-not-parentheses]
+           if(     (!g >= 245 && b <= 10 && r <= 10)   )
+                       ^~
+C:\2020Season\2020RobotCode\src\main\cpp\commands\VisionCommand.cpp:43:20: note: add parentheses around left hand side expression to silence this warning
+           if(     (!g >= 245 && b <= 10 && r <= 10)   )
+                    ^~
+                    ( )
+C:\2020Season\2020RobotCode\src\main\cpp\commands\VisionCommand.cpp:43:23: warning: comparison of constant '245' with boolean expression is always false [-Wbool-compare]
+           if(     (!g >= 245 && b <= 10 && r <= 10)   )
+                    ~~~^~~~~~
+
+compiling Robot.cpp successful.
+
+compiling RobotContainer.cpp successful.
+
+compiling CameraSubsystem.cpp successful.
+
+Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///C:/2020Season/2020RobotCode/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.

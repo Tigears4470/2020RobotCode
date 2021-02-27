@@ -1,0 +1,4 @@
+See file:///C:/2020Season/2020RobotCode/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt for all output for linkFrcUserProgramReleaseExecutable.
+linking frcUserProgram successful.
+
+Finished linkFrcUserProgramReleaseExecutable, see full log file:///C:/2020Season/2020RobotCode/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt.
