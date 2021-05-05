@@ -24,7 +24,9 @@ class DriveSubsystem : public frc2::SubsystemBase {
   void ArcadeDrive(double fwd, double rot);
 
  private:
+  //Private Variable to Store our RobotDrive object in order to create and control the DriveSystem
   frc::RobotDrive* m_drive;
+  
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };
