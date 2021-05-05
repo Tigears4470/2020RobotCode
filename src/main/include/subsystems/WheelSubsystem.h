@@ -7,6 +7,7 @@
 
 #pragma once
 
+//include statements that inherit from FRC
 #include <frc2/command/SubsystemBase.h>
 #include <frc/I2C.h>
 #include <frc/smartdashboard/SmartDashboard.h>
@@ -14,6 +15,7 @@
 
 #include "Constants.h"
 
+//creates public class WheelSubsystem that implements SubsystemBase from frc
 class WheelSubsystem : public frc2::SubsystemBase {
  public:
   WheelSubsystem();
@@ -21,12 +23,13 @@ class WheelSubsystem : public frc2::SubsystemBase {
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
+  //functions are initialized 
   void Periodic();
 
   int* Read();
 
   void Turn();
-
+  //private objects from WheelSubsystem class
  private:
   rev::ColorSensorV3 *color_sensor;
   // Components (e.g. motor controllers and sensors) should generally be
