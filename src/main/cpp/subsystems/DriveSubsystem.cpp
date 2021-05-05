@@ -9,6 +9,7 @@
 
 DriveSubsystem::DriveSubsystem()
 {
+    //Initialize m_drive to be a new RobotDrive object passing in the LEFT_MOTOR and RIGHT_MOTOR variables to represent ports on the Roborio
     m_drive = new frc::RobotDrive(LEFT_MOTOR, RIGHT_MOTOR);
 }
 
@@ -16,7 +17,7 @@ DriveSubsystem::DriveSubsystem()
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() {}
 
-
+//Takes in 2 doubles (forward and reverse) and then passes those values in to the ArcadeDrive method in the RobotDrive class to move the Robot forward and determine rotation
 void DriveSubsystem::ArcadeDrive(double fwd, double rot)
 {
     m_drive -> ArcadeDrive(fwd, rot);
