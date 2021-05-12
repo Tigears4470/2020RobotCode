@@ -24,12 +24,15 @@ void GetColorCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void GetColorCommand::Execute() {
+  //Get the current color read by the wheel stored in an array of size 3 (RGB Values)
   int* read_clr_values = wheel_sub -> Read();
+  //Get the difference in color values between the color just read and the ideal color values
   int red_distance = distance(c_RED, read_clr_values);
   int green_distance = distance(c_GREEN, read_clr_values);
   int blue_distance = distance(c_BLUE, read_clr_values);
   int yellow_distance = distance(c_YELLOW, read_clr_values);
 
+  //Find the smallest value among the 4 color_distance varaiables and set smallest_distance equal to that
   int smallest_distance = std::min({red_distance, green_distance, blue_distance, yellow_distance }, [](int a, int b) {return a < b;});
   if(smallest_distance == red_distance)
   {

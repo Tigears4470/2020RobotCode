@@ -20,6 +20,7 @@ void ArcadeDriveCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void ArcadeDriveCommand::Execute() {
+  //Tells our drive_train variable to execute the method ArcadeDrive and pass in our private variables of m_forward and m_rotation in order to move the robot
   drive_train->ArcadeDrive(m_forward(), m_rotation());
 }
 

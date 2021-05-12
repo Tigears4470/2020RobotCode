@@ -23,6 +23,7 @@ class ArcadeDriveCommand
     : public frc2::CommandHelper<frc2::CommandBase, ArcadeDriveCommand>
 {
 public:
+  //Construtor for the ArcadeDriveCommand requiring a DriveSubsystem for ArcadeDrive as well as a lambda function for forward and reverse to control the ArcadeDrive within the command
   explicit ArcadeDriveCommand(DriveSubsystem *subsystem, std::function<double()> forward, std::function<double()> rotation);
 
   void Initialize() override;
