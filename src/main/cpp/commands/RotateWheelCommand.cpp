@@ -86,6 +86,8 @@ void RotateWheelCommand::Execute() {
 
 
 
+  //Determines whether or not a revolution has occured if the color has switched and returned to the starting color
+
   if(current_color == starting_color && current_color != previous_color)
   {
     revolutions++;

@@ -65,12 +65,15 @@ if(gameData.length() > 0)
 
 // Called repeatedly when this Command is scheduled to run
 void SetColorCommand::Execute() {
+  //Read the pixels of the current color into the array read_clr_values
   int* read_clr_values = wheel_sub -> Read();
+  //Calculate the distance between that color and a predetermined default for said color
   int red_distance = distance(c_RED, read_clr_values);
   int green_distance = distance(c_GREEN, read_clr_values);
   int blue_distance = distance(c_BLUE, read_clr_values);
   int yellow_distance = distance(c_YELLOW, read_clr_values);
 
+  //Get smallest distance among the 4 colors (R, G, B, Y)
   int smallest_distance = std::min({red_distance, green_distance, blue_distance, yellow_distance }, [](int a, int b) {return a < b;});
   if(smallest_distance == red_distance)
   {
@@ -89,6 +92,8 @@ void SetColorCommand::Execute() {
     current_color = "YELLOW";
   }
 
+
+  //Rotates until predetermined color is read on the camera
   if(color_needed == "RED" && current_color == "BLUE")
   {
     is_finished = true;
